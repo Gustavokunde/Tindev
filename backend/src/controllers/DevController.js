@@ -21,14 +21,14 @@ module.exports = {
   async store(req, res) {
     const { username } = req.body;
 
-    const userExists = await Dev.findOneAndDelete({ user: username });
+    const userExists = await Dev.findOneAndDelete({ user: "gustavokunde" });
 
     if (userExists) {
       return res.json(userExists);
     }
 
     const response = await axios.get(
-      `https://api.github.com/users/${username}`
+      `https://api.github.com/users/gustavokunde`
     );
 
     const { name, bio, avatar_url: avatar } = response.data;
